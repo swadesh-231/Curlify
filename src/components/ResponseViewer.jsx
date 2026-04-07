@@ -90,7 +90,7 @@ export default function ResponseViewer() {
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {/* Status bar */}
-      <div className="px-5 py-3 border-b border-zinc-200 dark:border-zinc-700/50 flex items-center justify-between gap-3 shrink-0">
+      <div className="px-4 sm:px-5 py-3 border-b border-zinc-200 dark:border-zinc-700/50 flex flex-wrap items-center justify-between gap-2 sm:gap-3 shrink-0">
         <div className="flex items-center gap-3">
           <StatusBadge status={response.status} statusText={response.statusText} />
           {responseTime !== null && <TimeBadge ms={responseTime} />}

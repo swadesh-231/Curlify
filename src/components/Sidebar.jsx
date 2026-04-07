@@ -33,7 +33,7 @@ function formatTime(iso) {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
 }
 
-export default function Sidebar() {
+export default function Sidebar({ onNavigate }) {
   const history = useStore((s) => s.history);
   const saved = useStore((s) => s.saved);
   const loadRequest = useStore((s) => s.loadRequest);
@@ -162,7 +162,7 @@ export default function Sidebar() {
                 {history.map((item) => (
                   <button
                     key={item.id}
-                    onClick={() => loadRequest(item)}
+                    onClick={() => { loadRequest(item); onNavigate?.(); }}
                     className="w-full text-left px-4 py-2.5 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors group"
                   >
                     <div className="flex items-center gap-2">
@@ -197,7 +197,7 @@ export default function Sidebar() {
                     className="flex items-center px-4 py-2.5 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors group"
                   >
                     <button
-                      onClick={() => loadRequest(item)}
+                      onClick={() => { loadRequest(item); onNavigate?.(); }}
                       className="flex-1 text-left min-w-0"
                     >
                       <div className="flex items-center gap-2">

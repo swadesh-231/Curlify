@@ -41,32 +41,34 @@ export default function RequestBuilder() {
         <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 mb-3">Request</h2>
 
         {/* Method + URL + Send */}
-        <div className="flex gap-2">
-          <select
-            value={method}
-            onChange={(e) => setMethod(e.target.value)}
-            className={`px-3 py-2 text-sm font-bold rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/40 cursor-pointer transition-shadow ${METHOD_COLORS[method]}`}
-          >
-            {METHODS.map((m) => (
-              <option key={m} value={m}>
-                {m}
-              </option>
-            ))}
-          </select>
+        <div className="flex flex-wrap gap-2">
+          <div className="flex gap-2 w-full sm:w-auto sm:flex-1 min-w-0">
+            <select
+              value={method}
+              onChange={(e) => setMethod(e.target.value)}
+              className={`px-3 py-2 text-sm font-bold rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500/40 cursor-pointer transition-shadow shrink-0 ${METHOD_COLORS[method]}`}
+            >
+              {METHODS.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
 
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="https://api.example.com/endpoint"
-            className="flex-1 px-4 py-2 text-sm font-mono rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-shadow"
-          />
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="https://api.example.com/endpoint"
+              className="flex-1 min-w-0 px-4 py-2 text-sm font-mono rounded-lg border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-shadow"
+            />
+          </div>
 
           <button
             onClick={handleSend}
             disabled={loading}
-            className="px-5 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2 shrink-0"
+            className="w-full sm:w-auto px-5 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 shrink-0"
           >
             {loading ? (
               <>
@@ -79,7 +81,7 @@ export default function RequestBuilder() {
             ) : (
               <>
                 Send
-                <kbd className="text-[10px] opacity-60 font-mono">^↵</kbd>
+                <kbd className="text-[10px] opacity-60 font-mono hidden sm:inline">^↵</kbd>
               </>
             )}
           </button>

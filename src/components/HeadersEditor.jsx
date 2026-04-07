@@ -3,25 +3,27 @@ import useStore from '../store/useStore';
 
 const HeaderRow = memo(function HeaderRow({ header, index, onChange, onRemove, canRemove }) {
   return (
-    <div className="flex gap-2 items-center">
-      <input
-        type="text"
-        placeholder="Key"
-        value={header.key}
-        onChange={(e) => onChange(index, 'key', e.target.value)}
-        className="flex-1 px-3 py-1.5 text-sm rounded-md border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-shadow"
-      />
-      <input
-        type="text"
-        placeholder="Value"
-        value={header.value}
-        onChange={(e) => onChange(index, 'value', e.target.value)}
-        className="flex-1 px-3 py-1.5 text-sm rounded-md border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-shadow"
-      />
+    <div className="flex gap-2 items-start">
+      <div className="flex-1 flex flex-col sm:flex-row gap-1.5 sm:gap-2 min-w-0">
+        <input
+          type="text"
+          placeholder="Key"
+          value={header.key}
+          onChange={(e) => onChange(index, 'key', e.target.value)}
+          className="flex-1 min-w-0 px-3 py-1.5 text-sm rounded-md border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-shadow"
+        />
+        <input
+          type="text"
+          placeholder="Value"
+          value={header.value}
+          onChange={(e) => onChange(index, 'value', e.target.value)}
+          className="flex-1 min-w-0 px-3 py-1.5 text-sm rounded-md border border-zinc-300 dark:border-zinc-600 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-blue-500/40 transition-shadow"
+        />
+      </div>
       <button
         onClick={() => onRemove(index)}
         disabled={!canRemove}
-        className="p-1.5 text-zinc-400 hover:text-red-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shrink-0"
+        className="p-1.5 mt-0.5 text-zinc-400 hover:text-red-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shrink-0"
         title="Remove header"
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2">

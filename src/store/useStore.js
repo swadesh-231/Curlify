@@ -29,7 +29,11 @@ const useStore = create((set, get) => ({
   // Theme
   darkMode: window.matchMedia('(prefers-color-scheme: dark)').matches,
 
+  // UI
+  sidebarOpen: false,
+
   // Actions
+  setSidebarOpen: (open) => set({ sidebarOpen: open }),
   setMethod: (method) => set({ method }),
   setUrl: (url) => set({ url }),
   setHeaders: (headers) => set({ headers }),
